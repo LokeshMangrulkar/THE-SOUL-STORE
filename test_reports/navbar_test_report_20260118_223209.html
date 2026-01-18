@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Test Report - 2026-01-18 22:32:09</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .summary-card h3 {
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .summary-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+        .summary-card.passed .value {
+            color: #28a745;
+        }
+        .summary-card.failed .value {
+            color: #dc3545;
+        }
+        .summary-card.overall {
+            grid-column: 1 / -1;
+        }
+        .overall.passed {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+        .overall.failed {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            color: white;
+        }
+        .overall h3 {
+            color: white;
+        }
+        .test-details {
+            padding: 30px;
+        }
+        .test-details h2 {
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .test-step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        .test-step:hover {
+            transform: translateX(5px);
+        }
+        .test-step.passed {
+            border-left-color: #28a745;
+        }
+        .test-step.failed {
+            border-left-color: #dc3545;
+        }
+        .test-step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .test-step-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .status-badge.passed {
+            background: #28a745;
+            color: white;
+        }
+        .status-badge.failed {
+            background: #dc3545;
+            color: white;
+        }
+        .test-step-message {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .test-step-duration {
+            color: #999;
+            font-size: 0.9em;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #dee2e6;
+        }
+        .test-info {
+            background: white;
+            padding: 20px;
+            margin: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .test-info-row:last-child {
+            border-bottom: none;
+        }
+        .test-info-label {
+            font-weight: bold;
+            color: #666;
+        }
+        .test-info-value {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍔 Navbar Test Report</h1>
+            <p>Automated Selenium Hamburger Menu Testing</p>
+        </div>
+        
+        <div class="summary">
+            <div class="summary-card overall passed">
+                <h3>Overall Status</h3>
+                <div class="value">✓ PASSED</div>
+            </div>
+            <div class="summary-card passed">
+                <h3>Passed Tests</h3>
+                <div class="value">14</div>
+            </div>
+            <div class="summary-card failed">
+                <h3>Failed Tests</h3>
+                <div class="value">0</div>
+            </div>
+            <div class="summary-card">
+                <h3>Total Duration</h3>
+                <div class="value">391.15s</div>
+            </div>
+        </div>
+        
+        <div class="test-info">
+            <div class="test-info-row">
+                <span class="test-info-label">Website URL:</span>
+                <span class="test-info-value">https://www.thesouledstore.com/</span>
+            </div>
+            <div class="test-info-row">
+                <span class="test-info-label">Test Execution Time:</span>
+                <span class="test-info-value">2026-01-18 22:25:38</span>
+            </div>
+            <div class="test-info-row">
+                <span class="test-info-label">Browser:</span>
+                <span class="test-info-value">Chrome</span>
+            </div>
+            <div class="test-info-row">
+                <span class="test-info-label">Test Type:</span>
+                <span class="test-info-value">Hamburger Menu & Navbar Functionality</span>
+            </div>
+        </div>
+        
+        <div class="test-details">
+            <h2>📋 Test Execution Details</h2>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 1: Hamburger Menu Presence</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Hamburger menu element found and is displayed</div>
+                <div class="test-step-duration">⏱ Duration: 32.20s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 2: Hamburger Menu Clickable</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Hamburger menu is clickable and clicked successfully</div>
+                <div class="test-step-duration">⏱ Duration: 2.16s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 3: Menu Opens Successfully</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Menu opened with 3 navigation items found</div>
+                <div class="test-step-duration">⏱ Duration: 10.29s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 4: Navbar Structure</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Navbar structure verified. Logo: 3, Search: 4, Cart: 1</div>
+                <div class="test-step-duration">⏱ Duration: 0.06s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 5: Top Navigation Menu</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Found 3 navigation items: MEN, WOMEN, SNEAKERS</div>
+                <div class="test-step-duration">⏱ Duration: 0.04s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 6: Menu Item Navigation</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">3 out of 3 menu items are clickable</div>
+                <div class="test-step-duration">⏱ Duration: 0.05s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 7: Men Navigation</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Successfully redirected to Men page: https://www.thesouledstore.com/men</div>
+                <div class="test-step-duration">⏱ Duration: 28.28s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 8: Women Navigation</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Successfully redirected to Women page: https://www.thesouledstore.com/women</div>
+                <div class="test-step-duration">⏱ Duration: 37.23s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 9: Sneakers Navigation</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Successfully redirected to Sneakers page: https://www.thesouledstore.com/sneakers</div>
+                <div class="test-step-duration">⏱ Duration: 34.48s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 10: Brand Icon Functionality</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Brand icon is functional and navigates to home: https://www.thesouledstore.com/</div>
+                <div class="test-step-duration">⏱ Duration: 35.07s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 11: Search Functionality</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Search for 'Shirts' successful. Found 7 results. URL: https://www.thesouledstore.com/search?q=Shirts</div>
+                <div class="test-step-duration">⏱ Duration: 76.03s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 12: Login/Profile Icon</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Login/profile icon functional. Login interface appeared. URL: https://www.thesouledstore.com/login?redirect=%2F</div>
+                <div class="test-step-duration">⏱ Duration: 34.09s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 13: Wishlist Icon</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Wishlist icon functional. Response detected. URL: https://www.thesouledstore.com/mywishlist</div>
+                <div class="test-step-duration">⏱ Duration: 37.99s</div>
+            </div>
+            
+            <div class="test-step passed">
+                <div class="test-step-header">
+                    <span class="test-step-title">Step 14: Shopping Cart Icon</span>
+                    <span class="status-badge passed">PASSED</span>
+                </div>
+                <div class="test-step-message">Cart icon functional. Response detected. URL: https://www.thesouledstore.com/cart</div>
+                <div class="test-step-duration">⏱ Duration: 41.57s</div>
+            </div>
+            
+        </div>
+        
+        <div class="footer">
+            <p>Generated by Selenium Navbar Test Automation</p>
+            <p>Report generated on 2026-01-18 22:32:09</p>
+        </div>
+    </div>
+</body>
+</html>
+        
